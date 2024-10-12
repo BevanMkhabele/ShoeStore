@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"] {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>User Profile</h1>
+</header>
+
+<div class="container">
+    <h2>Profile Information</h2>
+    <form id="profileForm" onsubmit="event.preventDefault(); saveProfile();">
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Shipping Address:</label>
+            <input type="text" id="address" required>
+        </div>
+        <button type="submit" class="submit-btn">Save Changes</button>
+    </form>
+</div>
+
+<script>
+    // Sample data (replace with actual user data retrieval from server or local storage)
+    const userProfile = {
+        name: "John Doe",
+        email: "john@example.com",
+        phone: "123-456-7890",
+        address: "123 Main St, Anytown, USA"
+    };
+
+    // Populate the form with user profile data
+    function populateProfile() {
+        document.getElementById('name').value = userProfile.name;
+        document.getElementById('email').value = userProfile.email;
+        document.getElementById('phone').value = userProfile.phone;
+        document.getElementById('address').value = userProfile.address;
+    }
+
+    // Save profile changes (this would typically involve sending data to the server)
+    function saveProfile() {
+        userProfile.name = document.getElementById('name').value;
+        userProfile.email = document.getElementById('email').value;
+        userProfile.phone = document.getElementById('phone').value;
+        userProfile.address = document.getElementById('address').value;
+
+        alert("Profile updated successfully!");
+        // Here you would typically send the updated data to the server
+    }
+
+    window.onload = populateProfile;
+</script>
+
+</body>
+</html>
