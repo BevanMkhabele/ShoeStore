@@ -88,8 +88,38 @@
             margin: 20px 0;
             display: none; /* Hide initially */
         }
+
+        #cart {
+            margin-top: 40px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        #cart h2 {
+            margin-top: 0;
+        }
+
+        #cartItems {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #cartItems li {
+            margin-bottom: 10px;
+        }
+
+        #cartItems button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
     </style>
     <script>
+        const cart = [];
+
         function updateImage() {
             const modelSelect = document.getElementById('model');
             const phoneImage = document.getElementById('phoneImage');
@@ -98,6 +128,54 @@
             // Set the source of the image based on the selected model
             phoneImage.src = selectedModel;
             phoneImage.style.display = 'block'; // Show the image
+        }
+
+        function addToCart() {
+            const modelSelect = document.getElementById('model');
+            const storageSelect = document.getElementById('storage');
+            const colorSelect = document.getElementById('color');
+            const warrantySelect = document.getElementById('warranty');
+            const extras = Array.from(document.querySelectorAll('input[name="extras"]:checked')).map(input => input.value);
+
+            if (!modelSelect.value || !storageSelect.value || !colorSelect.value || !warrantySelect.value) {
+                alert("Please select all options before adding to the cart.");
+                return;
+            }
+
+            const cartItem = {
+                model: modelSelect.options[modelSelect.selectedIndex].text,
+                storage: storageSelect.value,
+                color: colorSelect.value,
+                warranty: warrantySelect.value,
+                extras: extras
+            };
+
+            cart.push(cartItem);
+            displayCart();
+            alert("Item added to cart!");
+        }
+
+        function displayCart() {
+            const cartItemsList = document.getElementById('cartItems');
+            cartItemsList.innerHTML = ''; // Clear previous items
+
+            cart.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <strong>${item.model}</strong><br>
+                    Storage: ${item.storage}<br>
+                    Color: ${item.color}<br>
+                    Warranty: ${item.warranty}<br>
+                    Extras: ${item.extras.join(', ') || 'None'}
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsList.appendChild(listItem);
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            displayCart();
         }
     </script>
 </head>
@@ -127,7 +205,7 @@
 
     <h2>Select Features for Your iPhone</h2>
 
-    <form action="submit_order.html" method="post">
+    <form onsubmit="event.preventDefault(); addToCart();">
 
         <div class="form-group">
             <label for="storage">Storage Capacity:</label>
@@ -172,8 +250,13 @@
             </select>
         </div>
 
-        <button type="submit" class="submit-btn">Submit and Buy</button>
+        <button type="submit" class="submit-btn">Add to Cart</button>
     </form>
+
+    <div id="cart">
+        <h2>Your Cart</h2>
+        <ul id="cartItems"></ul>
+    </div>
 </div>
 
 </body>
