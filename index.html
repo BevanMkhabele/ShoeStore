@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoe Box - Your Online Shoe Store</title>
+    <title>iPhone Shop - Your Premium iPhone Store</title>
     <!-- Add your CSS styles here -->
     <style>
         body {
@@ -20,7 +20,7 @@
         }
 
         header {
-            background-color: lightgrey; /* Updated to a darker shade of grey */
+            background-color: lightgrey;
             color: #fff;
             padding: 10px;
             text-align: center;
@@ -31,7 +31,7 @@
         }
 
         #logo {
-            max-width: 50px; /* Updated width to 50px */
+            max-width: 50px;
             height: auto;
         }
 
@@ -55,16 +55,16 @@
             cursor: pointer;
         }
 
-        #shoeCategories {
+        #iphoneCategories {
             text-align: center;
             margin: 20px;
         }
 
-        #shoeCategories h2 {
+        #iphoneCategories h2 {
             color: #333;
         }
 
-        #shoeCategories ul {
+        #iphoneCategories ul {
             list-style-type: none;
             padding: 0;
             display: flex;
@@ -72,7 +72,7 @@
             justify-content: center;
         }
 
-        #shoeCategories li {
+        #iphoneCategories li {
             font-size: 18px;
             margin: 5px 10px;
         }
@@ -172,7 +172,7 @@
 
         /* Responsive Styles */
         @media screen and (max-width: 768px) {
-            #shoeCategories li {
+            #iphoneCategories li {
                 font-size: 16px;
                 margin: 5px;
             }
@@ -206,147 +206,110 @@
 
 <div id="container">
     <header>
-        <img id="logo" src="light.png" alt="Logo">
-        <input type="text" id="searchBar" placeholder="Search...">
+        <img id="logo" src="iphone_logo.png" alt="iPhone Store Logo">
+        <input type="text" id="searchBar" placeholder="Search iPhones...">
         <button id="searchButton" onclick="performSearch()">Search</button>
         <div id="headerButtons">
-            <button class="headerButton" onclick="performAction1()">Button 1</button>
-            <button class="headerButton" onclick="performAction2()">Button 2</button>
-            <button class="headerButton" onclick="performAction3()">Button 3</button>
-            <button class="headerButton" onclick="performAction4()">Button 4</button>
+            <button class="headerButton" onclick="performAction1()">New Arrivals</button>
+            <button class="headerButton" onclick="performAction2()">Best Sellers</button>
+            <button class="headerButton" onclick="performAction3()">iPhone Deals</button>
+            <button class="headerButton" onclick="performAction4()">Contact Us</button>
         </div>
     </header>
 
-    <div id="shoeCategories">
-        <h2>Shoe Categories</h2>
+    <div id="iphoneCategories">
+        <h2>iPhone Categories</h2>
         <ul>
-            <li>NEW</li>
-            <li>SANDALS</li>
-            <li>SNEAKERS</li>
-            <li>HEELS</li>
-            <li>BROGUES</li>
-            <li>SLIPPERS & FLATS</li>
-            <li>WEDGES</li>
-            <li>ESPADRILLES</li>
-            <li>BOOTS</li>
-            <li>BRANDS</li>
-            <li>ACCESSORIES</li>
-            <li>SHOES ON SALE</li>
-            <li>CLEARANCE</li>
+            <li>iPhone 15</li>
+            <li>iPhone 14</li>
+            <li>iPhone 13</li>
+            <li>iPhone 12</li>
+            <li>iPhone 11</li>
+            <li>Refurbished iPhones</li>
+            <li>iPhone Accessories</li>
+            <li>iPhone Cases</li>
         </ul>
     </div>
 
     <div id="imageContainer">
-        <img src="sample.png" alt="Sample Image" />
+        <img src="iphone_banner.png" alt="iPhone Sale Banner" />
     </div>
 
     <div id="buttonContainer">
-        <button onclick="performButtonAction1()">Button 1</button>
-        <button onclick="performButtonAction2()">Button 2</button>
-        <button onclick="performButtonAction3()">Button 3</button>
-        <button onclick="performButtonAction4()">Button 4</button>
-        <button onclick="performButtonAction5()">Button 5</button>
-    </div>
-
-    <div id="pictureContainer">
-        <img src="sample.png" alt="Sample Picture 1">
-        <img src="sample.png" alt="Sample Picture 2">
-        <img src="sample.png" alt="Sample Picture 3">
-        <img src="sample.png" alt="Sample Picture 4">
+        <button onclick="buyNow()">Buy Now</button>
+        <button onclick="checkOutDeals()">Check Deals</button>
+        <button onclick="viewNewArrivals()">View New Arrivals</button>
     </div>
 
     <div id="textContainer">
-        <h3>Buy Shoes Online</h3>
-        <p>Find your perfect pair of shoes on Shoe Box</p>
+        <h3>Discover the Latest iPhones</h3>
+        <p>Shop the newest iPhones and find amazing deals on previous models.</p>
     </div>
 
     <div id="infoContainer">
         <ul>
             <li>
-                <h4>FREE RETURNS</h4>
-                <p>30-days free return policy.</p>
+                <h4>FREE SHIPPING</h4>
+                <p>On all iPhone orders.</p>
             </li>
             <li>
                 <h4>SECURE PAYMENT</h4>
-                <p>We accept major credit cards.</p>
+                <p>We accept major credit cards and PayPal.</p>
             </li>
             <li>
                 <h4>CUSTOMER SUPPORT</h4>
-                <p>Get answers and help.</p>
+                <p>Need help? Contact us 24/7.</p>
             </li>
         </ul>
     </div>
 
     <div id="newArrivalsContainer">
         <h2>NEW ARRIVALS</h2>
-        <img src="sample.png" alt="Sample New Arrival 1">
-        <img src="sample.png" alt="Sample New Arrival 2">
-        <img src="sample.png" alt="Sample New Arrival 3">
-        <img src="sample.png" alt="Sample New Arrival 4">
-        <img src="sample.png" alt="Sample New Arrival 5">
+        <img src="iphone15.png" alt="iPhone 15">
+        <img src="iphone14.png" alt="iPhone 14">
+        <img src="iphone13.png" alt="iPhone 13">
+        <img src="iphone12.png" alt="iPhone 12">
     </div>
 
-    <button id="shopNewArrivalButton" onclick="shopNewArrival()">Shop New Arrival</button>
+    <button id="shopNewArrivalButton" onclick="shopNewArrival()">Shop New iPhones</button>
 </div>
 
-<!-- The rest of your website content goes here -->
-
+<!-- JavaScript functionality -->
 <script>
-    // Add your JavaScript code here to handle button actions and search functionality
-
     function performSearch() {
-        // Add your search functionality here
-        alert("Performing search...");
+        alert("Searching iPhones...");
     }
 
     function performAction1() {
-        // Add functionality for Button 1
-        alert("Button 1 clicked!");
+        alert("Viewing New Arrivals...");
     }
 
     function performAction2() {
-        // Add functionality for Button 2
-        alert("Button 2 clicked!");
+        alert("Viewing Best Sellers...");
     }
 
     function performAction3() {
-        // Add functionality for Button 3
-        alert("Button 3 clicked!");
+        alert("Viewing iPhone Deals...");
     }
 
     function performAction4() {
-        // Add functionality for Button 4
-        alert("Button 4 clicked!");
+        alert("Contact Us clicked!");
     }
 
-    function performButtonAction1() {
-        // Add functionality for Button 1 below the image
-        alert("Button 1 below image clicked!");
+    function buyNow() {
+        alert("Proceeding to purchase...");
     }
 
-    function performButtonAction2() {
-        // Add functionality for Button 2 below the image
-        alert("Button 2 below image clicked!");
+    function checkOutDeals() {
+        alert("Checking out deals...");
     }
 
-    function performButtonAction3() {
-        // Add functionality for Button 3 below the image
-        alert("Button 3 below image clicked!");
-    }
-
-    function performButtonAction4() {
-        // Add functionality for Button 4 below the image
-        alert("Button 4 below image clicked!");
-    }
-
-    function performButtonAction5() {
-        // Add functionality for Button 5 below the image
-        alert("Button 5 below image clicked!");
+    function viewNewArrivals() {
+        alert("Viewing new iPhones...");
     }
 
     function shopNewArrival() {
-        // Add functionality for "Shop New Arrival" button
-        alert("Shop New Arrival clicked!");
+        alert("Shopping new iPhones...");
     }
 </script>
 
