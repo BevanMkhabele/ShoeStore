@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone Shop - Your Premium iPhone Store</title>
+    <title>iPhone Store - XS to 16 Pro Max</title>
     <!-- Add your CSS styles here -->
     <style>
         body {
@@ -15,7 +15,7 @@
         #container {
             background-color: #f5f5f5;
             max-width: 1200px;
-            margin: 0 auto; /* Center the container */
+            margin: 0 auto;
             box-sizing: border-box;
         }
 
@@ -25,7 +25,6 @@
             padding: 10px;
             text-align: center;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
         }
@@ -206,110 +205,95 @@
 
 <div id="container">
     <header>
-        <img id="logo" src="iphone_logo.png" alt="iPhone Store Logo">
-        <input type="text" id="searchBar" placeholder="Search iPhones...">
+        <img id="logo" src="iphone_logo.png" alt="iPhone Logo">
+        <input type="text" id="searchBar" placeholder="Search for iPhones...">
         <button id="searchButton" onclick="performSearch()">Search</button>
         <div id="headerButtons">
-            <button class="headerButton" onclick="performAction1()">New Arrivals</button>
-            <button class="headerButton" onclick="performAction2()">Best Sellers</button>
-            <button class="headerButton" onclick="performAction3()">iPhone Deals</button>
-            <button class="headerButton" onclick="performAction4()">Contact Us</button>
+            <button class="headerButton" onclick="goToCart()">Cart</button>
         </div>
     </header>
 
     <div id="iphoneCategories">
-        <h2>iPhone Categories</h2>
+        <h2>iPhone Models</h2>
         <ul>
-            <li>iPhone 15</li>
-            <li>iPhone 14</li>
-            <li>iPhone 13</li>
-            <li>iPhone 12</li>
+            <li>iPhone XS</li>
+            <li>iPhone XS Max</li>
+            <li>iPhone XR</li>
             <li>iPhone 11</li>
-            <li>Refurbished iPhones</li>
-            <li>iPhone Accessories</li>
-            <li>iPhone Cases</li>
+            <li>iPhone 11 Pro</li>
+            <li>iPhone 12</li>
+            <li>iPhone 12 Pro</li>
+            <li>iPhone 13</li>
+            <li>iPhone 13 Pro Max</li>
+            <li>iPhone 14</li>
+            <li>iPhone 14 Pro Max</li>
+            <li>iPhone 15</li>
+            <li>iPhone 15 Pro Max</li>
+            <li>iPhone 16</li>
+            <li>iPhone 16 Pro Max</li>
         </ul>
     </div>
 
     <div id="imageContainer">
-        <img src="iphone_banner.png" alt="iPhone Sale Banner" />
+        <img src="iphone_16_pro_max.png" alt="iPhone 16 Pro Max Image" />
     </div>
 
     <div id="buttonContainer">
-        <button onclick="buyNow()">Buy Now</button>
-        <button onclick="checkOutDeals()">Check Deals</button>
-        <button onclick="viewNewArrivals()">View New Arrivals</button>
+        <button onclick="buyiPhoneXS()">Buy iPhone XS</button>
+        <button onclick="buyiPhone16ProMax()">Buy iPhone 16 Pro Max</button>
     </div>
 
     <div id="textContainer">
-        <h3>Discover the Latest iPhones</h3>
-        <p>Shop the newest iPhones and find amazing deals on previous models.</p>
+        <h3>Buy the Latest iPhones</h3>
+        <p>Discover the latest iPhone models, including the iPhone 16 Pro Max. Get yours today!</p>
     </div>
 
     <div id="infoContainer">
         <ul>
             <li>
                 <h4>FREE SHIPPING</h4>
-                <p>On all iPhone orders.</p>
+                <p>Get free shipping on all orders.</p>
             </li>
             <li>
                 <h4>SECURE PAYMENT</h4>
-                <p>We accept major credit cards and PayPal.</p>
+                <p>All transactions are secured and encrypted.</p>
             </li>
             <li>
                 <h4>CUSTOMER SUPPORT</h4>
-                <p>Need help? Contact us 24/7.</p>
+                <p>Contact us for any inquiries or support.</p>
             </li>
         </ul>
     </div>
 
     <div id="newArrivalsContainer">
-        <h2>NEW ARRIVALS</h2>
-        <img src="iphone15.png" alt="iPhone 15">
-        <img src="iphone14.png" alt="iPhone 14">
-        <img src="iphone13.png" alt="iPhone 13">
-        <img src="iphone12.png" alt="iPhone 12">
+        <h2>New Arrivals</h2>
+        <img src="iphone_13_pro.png" alt="iPhone 13 Pro">
+        <img src="iphone_14_pro.png" alt="iPhone 14 Pro">
+        <img src="iphone_15_pro.png" alt="iPhone 15 Pro">
     </div>
 
-    <button id="shopNewArrivalButton" onclick="shopNewArrival()">Shop New iPhones</button>
+    <button id="shopNewArrivalButton" onclick="shopNewArrival()">Shop Now</button>
 </div>
 
-<!-- JavaScript functionality -->
 <script>
     function performSearch() {
-        alert("Searching iPhones...");
+        alert("Searching for iPhones...");
     }
 
-    function performAction1() {
-        alert("Viewing New Arrivals...");
+    function buyiPhoneXS() {
+        alert("You are purchasing an iPhone XS.");
     }
 
-    function performAction2() {
-        alert("Viewing Best Sellers...");
-    }
-
-    function performAction3() {
-        alert("Viewing iPhone Deals...");
-    }
-
-    function performAction4() {
-        alert("Contact Us clicked!");
-    }
-
-    function buyNow() {
-        alert("Proceeding to purchase...");
-    }
-
-    function checkOutDeals() {
-        alert("Checking out deals...");
-    }
-
-    function viewNewArrivals() {
-        alert("Viewing new iPhones...");
+    function buyiPhone16ProMax() {
+        alert("You are purchasing an iPhone 16 Pro Max.");
     }
 
     function shopNewArrival() {
-        alert("Shopping new iPhones...");
+        alert("Redirecting to the shop page...");
+    }
+
+    function goToCart() {
+        alert("Taking you to your cart...");
     }
 </script>
 
