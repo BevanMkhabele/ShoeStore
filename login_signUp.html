@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Store - Login / Sign Up</title>
+    <!-- Add your CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 15px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .toggle-link:hover {
+            color: #333;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="loginContainer">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="email">Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <p class="toggle-link" onclick="toggleForms()">Don't have an account? Sign Up</p>
+    <p class="error-message" id="loginErrorMessage"></p>
+</div>
+
+<div class="container" id="signupContainer" style="display:none;">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+        <label for="username">Full Name</label>
+        <input type="text" id="signupName" placeholder="Enter your full name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="signupPassword" placeholder="Create a password" required>
+
+        <button type="button" onclick="signUp()">Sign Up</button>
+    </form>
+
+    <p class="toggle-link" onclick="toggleForms()">Already have an account? Login</p>
+    <p class="error-message" id="signupErrorMessage"></p>
+</div>
+
+<script>
+    function toggleForms() {
+        let loginContainer = document.getElementById('loginContainer');
+        let signupContainer = document.getElementById('signupContainer');
+
+        if (loginContainer.style.display === "none") {
+            loginContainer.style.display = "block";
+            signupContainer.style.display = "none";
+        } else {
+            loginContainer.style.display = "none";
+            signupContainer.style.display = "block";
+        }
+    }
+
+    function login() {
+        let email = document.getElementById('loginEmail').value;
+        let password = document.getElementById('loginPassword').value;
+
+        // Perform validation (replace with real backend logic)
+        if (email === "user@example.com" && password === "password") {
+            alert("Login successful!");
+            window.location.href = "homepage.html"; // Redirect to homepage
+        } else {
+            document.getElementById('loginErrorMessage').textContent = "Invalid email or password.";
+        }
+    }
+
+    function signUp() {
+        let name = document.getElementById('signupName').value;
+        let email = document.getElementById('signupEmail').value;
+        let password = document.getElementById('signupPassword').value;
+
+        // Simple validation (replace with real backend logic)
+        if (name && email && password) {
+            alert("Sign up successful!");
+            window.location.href = "homepage.html"; // Redirect to homepage
+        } else {
+            document.getElementById('signupErrorMessage').textContent = "All fields are required.";
+        }
+    }
+</script>
+
+</body>
+</html>
