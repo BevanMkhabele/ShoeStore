@@ -47,6 +47,15 @@
             margin-bottom: 8px;
         }
 
+        .form-group-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-group-inline label {
+            width: 45%;
+        }
+
         select, input[type="checkbox"] {
             padding: 8px;
             font-size: 16px;
@@ -57,15 +66,6 @@
         input[type="checkbox"] {
             width: auto;
             margin-right: 10px;
-        }
-
-        .form-group-inline {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .form-group-inline label {
-            width: 45%;
         }
 
         .submit-btn {
@@ -121,29 +121,56 @@
         const cart = [];
 
         function updateImage() {
-            const modelSelect = document.getElementById('model');
             const phoneImage = document.getElementById('phoneImage');
-            const selectedModel = modelSelect.value;
+            const modelText = document.getElementById('modelText').innerText;
 
-            // Set the source of the image based on the selected model
-            phoneImage.src = selectedModel;
+            // Set the source of the image based on the model text
+            let modelSrc = '';
+
+            switch (modelText) {
+                case 'iPhone XS':
+                    modelSrc = 'static/iphone_xs.png';
+                    break;
+                case 'iPhone 11':
+                    modelSrc = 'static/iphone_11.png';
+                    break;
+                case 'iPhone 12':
+                    modelSrc = 'static/iphone_12.png';
+                    break;
+                case 'iPhone 13':
+                    modelSrc = 'static/iphone_13.png';
+                    break;
+                case 'iPhone 14':
+                    modelSrc = 'static/iphone_14.png';
+                    break;
+                case 'iPhone 15':
+                    modelSrc = 'static/iphone_15.png';
+                    break;
+                case 'iPhone 16 Pro Max':
+                    modelSrc = 'static/iphone_16_pro_max.png';
+                    break;
+                default:
+                    modelSrc = '';
+            }
+
+            phoneImage.src = modelSrc;
             phoneImage.style.display = 'block'; // Show the image
         }
 
         function addToCart() {
-            const modelSelect = document.getElementById('model');
+            const modelText = document.getElementById('modelText').innerText;
             const storageSelect = document.getElementById('storage');
             const colorSelect = document.getElementById('color');
             const warrantySelect = document.getElementById('warranty');
             const extras = Array.from(document.querySelectorAll('input[name="extras"]:checked')).map(input => input.value);
 
-            if (!modelSelect.value || !storageSelect.value || !colorSelect.value || !warrantySelect.value) {
+            if (!storageSelect.value || !colorSelect.value || !warrantySelect.value) {
                 alert("Please select all options before adding to the cart.");
                 return;
             }
 
             const cartItem = {
-                model: modelSelect.options[modelSelect.selectedIndex].text,
+                model: modelText,
                 storage: storageSelect.value,
                 color: colorSelect.value,
                 warranty: warrantySelect.value,
@@ -177,6 +204,24 @@
             cart.splice(index, 1);
             displayCart();
         }
+
+        // Function to get the URL parameters
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to set the model based on the URL parameter
+        function setModel() {
+            const model = getUrlParameter('model');
+            if (model) {
+                document.getElementById('modelText').innerText = model; // Set the selected model
+                updateImage(); // Update the image
+            }
+        }
+
+        // Call setModel on page load
+        window.onload = setModel;
     </script>
 </head>
 <body>
@@ -186,27 +231,13 @@
 </header>
 
 <div class="container">
-    <h2>Select Your iPhone Model</h2>
-    <div class="form-group">
-        <label for="model">Choose Your iPhone Model:</label>
-        <select id="model" name="model" onchange="updateImage()" required>
-            <option value="">Select a model</option>
-            <option value="static/iphone_xs.png">iPhone XS</option>
-            <option value="static/iphone_11.png">iPhone 11</option>
-            <option value="static/iphone_12.png">iPhone 12</option>
-            <option value="static/iphone_13.png">iPhone 13</option>
-            <option value="static/iphone_14.png">iPhone 14</option>
-            <option value="static/iphone_15.png">iPhone 15</option>
-            <option value="static/iphone_16_pro_max.png">iPhone 16 Pro Max</option>
-        </select>
-    </div>
-
+    <h2>Your Selected iPhone Model</h2>
+    <p id="modelText" style="font-size: 24px; font-weight: bold;"></p>
     <img id="phoneImage" alt="Selected iPhone" />
 
     <h2>Select Features for Your iPhone</h2>
 
     <form onsubmit="event.preventDefault(); addToCart();">
-
         <div class="form-group">
             <label for="storage">Storage Capacity:</label>
             <select id="storage" name="storage" required>
