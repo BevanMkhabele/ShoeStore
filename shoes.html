@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Shoes Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 15px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h3 {
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .product p {
+            color: #666;
+        }
+
+        .product .price {
+            color: #333;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .buy-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Available Nike Shoes Models</h1>
+</header>
+
+<div id="container">
+    <!-- Repeat for each shoe model -->
+    <div class="product">
+        <img src="nike_air_force.png" alt="Nike Air Force">
+        <h3>Nike Air Force 1</h3>
+        <p>Available in various sizes and colors</p>
+        <p class="price">R2,499</p>
+        <a href="#" class="buy-button">Buy Now</a>
+    </div>
+
+    <div class="product">
+        <img src="nike_air_max.png" alt="Nike Air Max">
+        <h3>Nike Air Max 270</h3>
+        <p>Available in various sizes and colors</p>
+        <p class="price">R3,299</p>
+        <a href="#" class="buy-button">Buy Now</a>
+    </div>
+
+    <div class="product">
+        <img src="nike_jordan.png" alt="Nike Air Jordan">
+        <h3>Nike Air Jordan 1</h3>
+        <p>Available in various sizes and colors</p>
+        <p class="price">R4,999</p>
+        <a href="#" class="buy-button">Buy Now</a>
+    </div>
+
+    <div class="product">
+        <img src="nike_react.png" alt="Nike React">
+        <h3>Nike React Infinity Run</h3>
+        <p>Available in various sizes and colors</p>
+        <p class="price">R2,999</p>
+        <a href="#" class="buy-button">Buy Now</a>
+    </div>
+    <!-- End of products -->
+
+</div>
+
+</body>
+</html>
