@@ -4,26 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPhone Store - XS to 16 Pro Max</title>
-    <!-- Add your CSS styles here -->
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f5f5f5; /* Background color for the body */
         }
 
         #container {
-            background-color: #f5f5f5;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
             box-sizing: border-box;
         }
 
         header {
-            background-color: lightgrey;
+            background-color: #444; /* Changed background color */
             color: #fff;
             padding: 10px;
-            text-align: center;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -34,51 +33,73 @@
             height: auto;
         }
 
+        #headerButtons {
+            display: flex;
+            align-items: center;
+        }
+
         #searchBar {
+            padding: 10px;
+            margin: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
             flex-grow: 1;
-            padding: 5px;
-            margin: 10px;
+            min-width: 200px; /* Minimum width for the search bar */
         }
 
         #searchButton {
-            padding: 5px 10px;
+            padding: 10px 15px;
             cursor: pointer;
+            background-color: #555; /* Styled the search button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-left: 10px; /* Space between search bar and button */
+        }
+
+        #searchButton:hover {
+            background-color: #777; /* Hover effect for search button */
         }
 
         .headerButton {
-            padding: 5px 10px;
-            margin-right: 10px;
-            background-color: grey;
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 0 5px; /* Adjust margin for header buttons */
+            background-color: #555;
             color: #fff;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .headerButton:hover {
+            background-color: #777;
         }
 
         #iphoneCategories {
             text-align: center;
-            margin: 20px;
+            margin: 20px 0;
         }
 
         #iphoneCategories h2 {
             color: #333;
         }
 
-        #iphoneCategories ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        #iphoneCategories li {
-            font-size: 18px;
-            margin: 5px 10px;
+        #iphoneDropdown {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px auto;
+            display: block;
+            width: 200px; /* Width of the dropdown */
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         #imageContainer {
             text-align: center;
-            margin: 20px;
+            margin: 20px 0;
         }
 
         #imageContainer img {
@@ -88,32 +109,30 @@
         }
 
         #buttonContainer {
-            text-align: center;
-            margin: 20px;
+            text-align: center; /* Center align the button container */
+            margin: 20px 0;
         }
 
-        #buttonContainer button {
+        #dynamicButton {
             padding: 10px;
-            margin: 0 5px;
             background-color: #555;
             color: #fff;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: none; /* Initially hidden */
+            margin: 0 auto; /* Center the button */
+            text-align: center; /* Center text in button */
         }
 
-        #pictureContainer {
-            text-align: center;
-            margin: 20px;
-        }
-
-        #pictureContainer img {
-            width: calc(50% - 20px);
-            margin: 0 10px;
+        #dynamicButton:hover {
+            background-color: #777; /* Hover effect for dynamic button */
         }
 
         #textContainer {
             text-align: center;
-            margin: 20px;
+            margin: 20px 0;
         }
 
         #textContainer h3 {
@@ -128,7 +147,7 @@
 
         #infoContainer {
             text-align: center;
-            margin: 20px;
+            margin: 20px 0;
         }
 
         #infoContainer ul {
@@ -143,11 +162,12 @@
             width: 100%;
             max-width: 300px;
             margin: 10px;
+            text-align: center; /* Center-align list items */
         }
 
         #newArrivalsContainer {
             text-align: center;
-            margin: 20px;
+            margin: 20px 0;
         }
 
         #newArrivalsContainer h2 {
@@ -167,26 +187,44 @@
             color: #fff;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #shopNewArrivalButton:hover {
+            background-color: #777; /* Hover effect for Shop Now button */
+        }
+
+        /* Suggestion box styles */
+        #suggestions {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 200px;
+            z-index: 1000;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+
+        #suggestions div {
+            padding: 10px;
+            cursor: pointer;
+            color: black; /* Set suggestion text color to black */
+        }
+
+        #suggestions div:hover {
+            background-color: #f0f0f0; /* Highlight suggestion on hover */
         }
 
         /* Responsive Styles */
         @media screen and (max-width: 768px) {
-            #iphoneCategories li {
-                font-size: 16px;
-                margin: 5px;
+            #iphoneDropdown {
+                width: 100%; /* Full-width dropdown on small screens */
             }
 
             #imageContainer img {
                 max-width: 100%;
-            }
-
-            #buttonContainer button {
-                margin: 5px;
-            }
-
-            #pictureContainer img {
-                width: calc(100% - 20px);
-                margin: 0 10px;
             }
 
             #infoContainer li {
@@ -206,7 +244,10 @@
 <div id="container">
     <header>
         <img id="logo" src="iphone_logo.png" alt="iPhone Logo">
-        <input type="text" id="searchBar" placeholder="Search for iPhones...">
+        <div style="position: relative;">
+            <input type="text" id="searchBar" placeholder="Search for iPhones..." oninput="showSuggestions(this.value)">
+            <div id="suggestions"></div>
+        </div>
         <button id="searchButton" onclick="performSearch()">Search</button>
         <div id="headerButtons">
             <button class="headerButton" onclick="goToCart()">Cart</button>
@@ -214,86 +255,147 @@
     </header>
 
     <div id="iphoneCategories">
-        <h2>iPhone Models</h2>
-        <ul>
-            <li>iPhone XS</li>
-            <li>iPhone XS Max</li>
-            <li>iPhone XR</li>
-            <li>iPhone 11</li>
-            <li>iPhone 11 Pro</li>
-            <li>iPhone 12</li>
-            <li>iPhone 12 Pro</li>
-            <li>iPhone 13</li>
-            <li>iPhone 13 Pro Max</li>
-            <li>iPhone 14</li>
-            <li>iPhone 14 Pro Max</li>
-            <li>iPhone 15</li>
-            <li>iPhone 15 Pro Max</li>
-            <li>iPhone 16</li>
-            <li>iPhone 16 Pro Max</li>
-        </ul>
+        <h2>Select iPhone Model</h2>
+        <select id="iphoneDropdown" onchange="selectiPhone()">
+            <option value="">-- Select an iPhone Model --</option>
+            <option value="iphone-xs">iPhone XS</option>
+            <option value="iphone-xs-max">iPhone XS Max</option>
+            <option value="iphone-xr">iPhone XR</option>
+            <option value="iphone-11">iPhone 11</option>
+            <option value="iphone-11-pro">iPhone 11 Pro</option>
+            <option value="iphone-12">iPhone 12</option>
+            <option value="iphone-12-pro">iPhone 12 Pro</option>
+            <option value="iphone-13">iPhone 13</option>
+            <option value="iphone-13-pro-max">iPhone 13 Pro Max</option>
+            <option value="iphone-14">iPhone 14</option>
+            <option value="iphone-14-pro-max">iPhone 14 Pro Max</option>
+            <option value="iphone-15">iPhone 15</option>
+            <option value="iphone-15-pro-max">iPhone 15 Pro Max</option>
+            <option value="iphone-16">iPhone 16</option>
+            <option value="iphone-16-pro-max">iPhone 16 Pro Max</option>
+        </select>
     </div>
 
     <div id="imageContainer">
-        <img src="iphone_16_pro_max.png" alt="iPhone 16 Pro Max Image" />
+        <img id="iphoneImage" src="iphone_16_pro_max.png" alt="iPhone 16 Pro Max Image">
     </div>
 
     <div id="buttonContainer">
-        <button onclick="buyiPhoneXS()">Buy iPhone XS</button>
-        <button onclick="buyiPhone16ProMax()">Buy iPhone 16 Pro Max</button>
+        <button id="dynamicButton" onclick="buyiPhone()">BUY IPHONE __</button>
     </div>
 
     <div id="textContainer">
-        <h3>Buy the Latest iPhones</h3>
-        <p>Discover the latest iPhone models, including the iPhone 16 Pro Max. Get yours today!</p>
+        <h3>Welcome to the iPhone Store!</h3>
+        <p>Find the best iPhones from XS to 16 Pro Max.</p>
     </div>
 
     <div id="infoContainer">
         <ul>
             <li>
                 <h4>FREE SHIPPING</h4>
-                <p>Get free shipping on all orders.</p>
+                <p>Get free shipping on orders over $50.</p>
             </li>
             <li>
                 <h4>SECURE PAYMENT</h4>
-                <p>All transactions are secured and encrypted.</p>
+                <p>Your payment information is safe with us.</p>
             </li>
             <li>
-                <h4>CUSTOMER SUPPORT</h4>
-                <p>Contact us for any inquiries or support.</p>
+                <h4>24/7 SUPPORT</h4>
+                <p>We're here to help you anytime.</p>
             </li>
         </ul>
     </div>
 
     <div id="newArrivalsContainer">
         <h2>New Arrivals</h2>
-        <img src="iphone_13_pro.png" alt="iPhone 13 Pro">
-        <img src="iphone_14_pro.png" alt="iPhone 14 Pro">
-        <img src="iphone_15_pro.png" alt="iPhone 15 Pro">
+        <img src="iphone_14.png" alt="iPhone 14">
+        <img src="iphone_15.png" alt="iPhone 15">
+        <img src="iphone_16.png" alt="iPhone 16">
+        <button id="shopNewArrivalButton" onclick="shopNewArrival()">Shop New Arrivals</button>
     </div>
-
-    <button id="shopNewArrivalButton" onclick="shopNewArrival()">Shop Now</button>
 </div>
 
 <script>
+    const iphoneImages = {
+        "iphone-xs": "iphone_xs.png",
+        "iphone-xs-max": "iphone_xs_max.png",
+        "iphone-xr": "iphone_xr.png",
+        "iphone-11": "iphone_11.png",
+        "iphone-11-pro": "iphone_11_pro.png",
+        "iphone-12": "iphone_12.png",
+        "iphone-12-pro": "iphone_12_pro.png",
+        "iphone-13": "iphone_13.png",
+        "iphone-13-pro-max": "iphone_13_pro_max.png",
+        "iphone-14": "iphone_14.png",
+        "iphone-14-pro-max": "iphone_14_pro_max.png",
+        "iphone-15": "iphone_15.png",
+        "iphone-15-pro-max": "iphone_15_pro_max.png",
+        "iphone-16": "iphone_16.png",
+        "iphone-16-pro-max": "iphone_16_pro_max.png"
+    };
+
+    const iphoneModels = Object.keys(iphoneImages).map(key => key.replace(/-/g, ' ').replace('iphone ', 'iPhone '));
+
+    function showSuggestions(value) {
+        const suggestions = document.getElementById("suggestions");
+        suggestions.innerHTML = ''; // Clear previous suggestions
+
+        if (value) {
+            const filteredModels = iphoneModels.filter(model => model.toLowerCase().includes(value.toLowerCase()));
+            if (filteredModels.length > 0) {
+                suggestions.style.display = 'block'; // Show suggestion box
+                filteredModels.forEach(model => {
+                    const div = document.createElement("div");
+                    div.textContent = model;
+                    div.onclick = function() {
+                        document.getElementById("searchBar").value = model; // Set search bar value
+                        suggestions.style.display = 'none'; // Hide suggestions
+                        performSearch(); // Execute search function
+                    };
+                    suggestions.appendChild(div);
+                });
+            } else {
+                suggestions.style.display = 'none'; // Hide if no matches
+            }
+        } else {
+            suggestions.style.display = 'none'; // Hide if search bar is empty
+        }
+    }
+
     function performSearch() {
-        alert("Searching for iPhones...");
-    }
-
-    function buyiPhoneXS() {
-        alert("You are purchasing an iPhone XS.");
-    }
-
-    function buyiPhone16ProMax() {
-        alert("You are purchasing an iPhone 16 Pro Max.");
-    }
-
-    function shopNewArrival() {
-        alert("Redirecting to the shop page...");
+        const query = document.getElementById("searchBar").value;
+        alert(`Searching for ${query}...`);
     }
 
     function goToCart() {
-        alert("Taking you to your cart...");
+        alert("Redirecting to cart...");
+    }
+
+    function selectiPhone() {
+        const selectedValue = document.getElementById("iphoneDropdown").value;
+        const iphoneImage = document.getElementById("iphoneImage");
+        const dynamicButton = document.getElementById("dynamicButton");
+
+        // Update the image source based on the selected iPhone model
+        if (iphoneImages[selectedValue]) {
+            iphoneImage.src = iphoneImages[selectedValue];
+            iphoneImage.alt = selectedValue.replace(/-/g, ' ').replace('iphone ', 'iPhone ').toUpperCase(); // Update alt text
+            dynamicButton.style.display = 'block'; // Show the button
+            dynamicButton.textContent = `BUY IPHONE ${selectedValue.replace(/-/g, ' ').toUpperCase()}`; // Update button text
+        } else {
+            iphoneImage.src = ""; // Clear the image if no selection
+            iphoneImage.alt = "No iPhone Image"; // Update alt text
+            dynamicButton.style.display = 'none'; // Hide the button
+        }
+    }
+
+    function buyiPhone() {
+        const selectedValue = document.getElementById("iphoneDropdown").value;
+        alert(`Buying ${selectedValue.replace(/-/g, ' ').replace('iphone ', 'iPhone ').toUpperCase()}...`);
+    }
+
+    function shopNewArrival() {
+        alert("Shopping new arrivals...");
     }
 </script>
 
