@@ -3,49 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Everything</title>
+    <title>Animated Text with Clockwise Balls</title>
     <style>
-        /* Basic reset */
-        body, html { margin: 0; padding: 0; overflow: hidden; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        
-        /* Rotating Earth */
-        .earth-container {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/6/6f/Earth_Eastern_Hemisphere.jpg') no-repeat center/cover;
-            border-radius: 50%;
-            animation: spin 10s linear infinite;
+        body, html {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
         }
-        
-        /* Rotating Text */
-        .message {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            font-size: 1.2em;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: rotate-text 10s linear infinite;
-            text-align: center;
+        canvas {
+            display: block;
         }
-
-        /* Keyframes for rotation */
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        @keyframes rotate-text { from { transform: rotate(0deg) translateX(150px) rotate(0deg); } to { transform: rotate(360deg) translateX(150px) rotate(-360deg); } }
-
-        /* Message style */
-        .message span { display: inline-block; transform-origin: 0 0; }
     </style>
 </head>
 <body>
-
-    <div class="earth-container"></div>
-    <div class="message">
-        <span>You are my everything, Shumi ❤️</span>
-    </div>
-
+    <canvas id="textCanvas"></canvas>
+    <script src="script.js"></script>
 </body>
 </html>
